@@ -36,7 +36,7 @@ public class MedicoEndPoint {
         response.setMedico(medicows);
         return response;
     }
-    @PayloadRoot(namespace = NAMESPACE_URL, localPart = "postMedicoRequest")
+    @PayloadRoot(namespace = NAMESPACE_URL, localPart = "postmedicoRequest")
     @ResponsePayload
     public PostMedicoResponse saveMedico(@RequestPayload
                                                PostmedicoRequest request){

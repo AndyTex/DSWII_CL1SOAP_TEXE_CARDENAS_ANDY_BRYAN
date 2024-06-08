@@ -5,20 +5,26 @@ import pe.edu.cibertec.api_soap_pubs_examen.model.Medico;
 import pe.edu.cibertec.ws.objects.Medicows;
 
 import javax.xml.datatype.DatatypeConfigurationException;
+import javax.xml.datatype.DatatypeConstants;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
 @Component
 public class MedicoConvert {
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     public Medico convertMedicowsToMedico(Medicows medicows){
         Medico medico = new Medico();
         medico.setIdmedico(medicows.getIdmedico());
         medico.setNommedico(medicows.getNommedico());
         medico.setApemedico(medicows.getApemedico());
-        medico.setFechnacmedico(medicows.getFechnacmedico().toGregorianCalendar().getTime());
+        if (medicows.getFechnacmedico() != null) {
+            medico.setFechnacmedico(medicows.getFechnacmedico().toGregorianCalendar().getTime());
+        }
         return medico;
 
     }
@@ -32,10 +38,12 @@ public class MedicoConvert {
     }
     public Medicows convertMedicoToMedicoWs(Medico medico){
         Medicows medicows = new Medicows();
-        medico.setIdmedico(medicows.getIdmedico());
-        medico.setNommedico(medicows.getNommedico());
-        medico.setApemedico(medicows.getApemedico());
-        medico.setFechnacmedico(medicows.getFechnacmedico().toGregorianCalendar().getTime());
+        medicows.setIdmedico(medico.getIdmedico());
+        medicows.setNommedico(medico.getNommedico());
+        medicows.setApemedico(medico.getApemedico());
+        if (medico.getFechnacmedico() != null) {
+            medicows.setFechnacmedico(convertDateToXMLGregorianCalendar(medico.getFechnacmedico()));
+        }
         return medicows;
     }
     public List<Medicows> convertMedicoToMedicoWs(List<Medico> medico){
@@ -46,13 +54,24 @@ public class MedicoConvert {
         return medicoList;
     }
 
-    private XMLGregorianCalendar convertDateToXMLGregorianCalendar(java.util.Date date) {
+    private XMLGregorianCalendar convertDateToXMLGregorianCalendar(Date date) {
         try {
             GregorianCalendar gCalendar = new GregorianCalendar();
             gCalendar.setTime(date);
-            return DatatypeFactory.newInstance().newXMLGregorianCalendar(gCalendar);
+            XMLGregorianCalendar xmlGregorianCalendar = DatatypeFactory.newInstance().newXMLGregorianCalendar(gCalendar);
+            // Establecer correctamente los campos de la fecha
+            xmlGregorianCalendar.setYear(gCalendar.get(GregorianCalendar.YEAR));
+            xmlGregorianCalendar.setMonth(gCalendar.get(GregorianCalendar.MONTH) + 1); // XMLGregorianCalendar es 1-based para el mes.
+            xmlGregorianCalendar.setDay(gCalendar.get(GregorianCalendar.DAY_OF_MONTH));
+            xmlGregorianCalendar.setHour(DatatypeConstants.FIELD_UNDEFINED);
+            xmlGregorianCalendar.setMinute(DatatypeConstants.FIELD_UNDEFINED);
+            xmlGregorianCalendar.setSecond(DatatypeConstants.FIELD_UNDEFINED);
+            xmlGregorianCalendar.setMillisecond(DatatypeConstants.FIELD_UNDEFINED);
+            xmlGregorianCalendar.setTimezone(DatatypeConstants.FIELD_UNDEFINED);
+            return xmlGregorianCalendar;
         } catch (DatatypeConfigurationException e) {
-            throw new RuntimeException("Error al convertir fecha", e);
+            throw new RuntimeException("Error al convertir la fecha", e);
         }
     }
+
 }
