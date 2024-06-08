@@ -56,5 +56,28 @@ public class WebServiceConfig extends WsConfigurerAdapter {
     @Bean
     public XsdSchema numbersSchema() {
         return new SimpleXsdSchema(new ClassPathResource("xsd/numero.xsd"));
+
+
     }
+
+
+
+
+
+        // Math service WSDL definition
+        @Bean(name = "cuadrado")
+        public DefaultWsdl11Definition mathWsdl11Definition(XsdSchema mathSchema) {
+            DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
+            wsdl11Definition.setPortTypeName("MathPort");
+            wsdl11Definition.setLocationUri("/ws/cuadrado");
+            wsdl11Definition.setTargetNamespace("http://www.cibertec.edu.pe/ws/cuadrado");
+            wsdl11Definition.setSchema(mathSchema);
+            return wsdl11Definition;
+        }
+
+    @Bean
+     public XsdSchema mathSchema() {
+        return new SimpleXsdSchema(new ClassPathResource("xsd/cuadrado.xsd"));
+     }
+
 }
