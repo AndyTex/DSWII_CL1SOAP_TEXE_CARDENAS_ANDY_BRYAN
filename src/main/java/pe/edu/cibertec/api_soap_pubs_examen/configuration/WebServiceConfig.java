@@ -13,6 +13,8 @@ import org.springframework.ws.wsdl.wsdl11.DefaultWsdl11Definition;
 import org.springframework.xml.xsd.SimpleXsdSchema;
 import org.springframework.xml.xsd.XsdSchema;
 
+
+
 @EnableWs
 @Configuration
 public class WebServiceConfig extends WsConfigurerAdapter {
@@ -38,4 +40,21 @@ public class WebServiceConfig extends WsConfigurerAdapter {
         return new SimpleXsdSchema(new ClassPathResource("xsd/medico.xsd"));
     }
 
+
+
+
+    @Bean(name = "numbers")
+    public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema numbersSchema) {
+        DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
+        wsdl11Definition.setPortTypeName("NumbersPort");
+        wsdl11Definition.setLocationUri("/ws/numbers");
+        wsdl11Definition.setTargetNamespace("http://www.cibertec.edu.pe/ws/numbers");
+        wsdl11Definition.setSchema(numbersSchema);
+        return wsdl11Definition;
+    }
+
+    @Bean
+    public XsdSchema numbersSchema() {
+        return new SimpleXsdSchema(new ClassPathResource("xsd/numero.xsd"));
+    }
 }

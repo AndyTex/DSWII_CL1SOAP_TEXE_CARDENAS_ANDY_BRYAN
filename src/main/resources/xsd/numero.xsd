@@ -1,0 +1,23 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.cibertec.edu.pe/ws/numbers"
+           xmlns:tns="http://www.cibertec.edu.pe/ws/numbers"
+           elementFormDefault="qualified">
+
+    <!-- Definición de la solicitud para obtener la suma de números hasta un límite -->
+    <xs:element name="SumNumbersRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="limit" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Definición de la respuesta que incluye la suma calculada -->
+    <xs:element name="SumNumbersResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="sum" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
