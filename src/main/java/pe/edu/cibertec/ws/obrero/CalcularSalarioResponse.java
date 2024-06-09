@@ -2,7 +2,7 @@
 // Este archivo ha sido generado por Eclipse Implementation of JAXB v3.0.0 
 // Visite https://eclipse-ee4j.github.io/jaxb-ri 
 // Todas las modificaciones realizadas en este archivo se perderán si se vuelve a compilar el esquema de origen. 
-// Generado el: 2024.06.08 a las 08:19:45 PM PET 
+// Generado el: 2024.06.08 a las 09:01:32 PM PET 
 //
 
 
@@ -25,7 +25,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="obrero" type="{http://www.cibertec.edu.pe/ws/obrero}obrero"/&gt;
+ *         &lt;element name="obrero" type="{http://www.cibertec.edu.pe/ws/obrero}obreroResponse"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -42,17 +42,17 @@ import jakarta.xml.bind.annotation.XmlType;
 public class CalcularSalarioResponse {
 
     @XmlElement(required = true)
-    protected Obrero obrero;
+    protected ObreroResponse obrero;
 
     /**
      * Obtiene el valor de la propiedad obrero.
      * 
      * @return
      *     possible object is
-     *     {@link Obrero }
+     *     {@link ObreroResponse }
      *     
      */
-    public Obrero getObrero() {
+    public ObreroResponse getObrero() {
         return obrero;
     }
 
@@ -61,10 +61,10 @@ public class CalcularSalarioResponse {
      * 
      * @param value
      *     allowed object is
-     *     {@link Obrero }
+     *     {@link ObreroResponse }
      *     
      */
-    public void setObrero(Obrero value) {
+    public void setObrero(ObreroResponse value) {
         this.obrero = value;
     }
 

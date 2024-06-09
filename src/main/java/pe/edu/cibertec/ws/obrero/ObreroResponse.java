@@ -10,21 +10,21 @@ package pe.edu.cibertec.ws.obrero;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para anonymous complex type.
+ * <p>Clase Java para obreroResponse complex type.
  * 
  * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
- * &lt;complexType&gt;
+ * &lt;complexType name="obreroResponse"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="horas" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
+ *         &lt;element name="salario_final" type="{http://www.w3.org/2001/XMLSchema}double"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -34,28 +34,28 @@ import jakarta.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "horas"
+@XmlType(name = "obreroResponse", propOrder = {
+    "salarioFinal"
 })
-@XmlRootElement(name = "calcularSalarioRequest")
-public class CalcularSalarioRequest {
+public class ObreroResponse {
 
-    protected int horas;
+    @XmlElement(name = "salario_final")
+    protected double salarioFinal;
 
     /**
-     * Obtiene el valor de la propiedad horas.
+     * Obtiene el valor de la propiedad salarioFinal.
      * 
      */
-    public int getHoras() {
-        return horas;
+    public double getSalarioFinal() {
+        return salarioFinal;
     }
 
     /**
-     * Define el valor de la propiedad horas.
+     * Define el valor de la propiedad salarioFinal.
      * 
      */
-    public void setHoras(int value) {
-        this.horas = value;
+    public void setSalarioFinal(double value) {
+        this.salarioFinal = value;
     }
 
 }
