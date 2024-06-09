@@ -80,4 +80,51 @@ public class WebServiceConfig extends WsConfigurerAdapter {
         return new SimpleXsdSchema(new ClassPathResource("xsd/cuadrado.xsd"));
      }
 
+    @Bean(name = "tiempo")
+    public DefaultWsdl11Definition tiempoWsdl11Definition(XsdSchema tiempoSchema) {
+        DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
+        wsdl11Definition.setPortTypeName("TiempoPort");
+        wsdl11Definition.setLocationUri("/ws/tiempo");
+        wsdl11Definition.setTargetNamespace("http://www.cibertec.edu.pe/ws/tiempo");
+        wsdl11Definition.setSchema(tiempoSchema);
+        return wsdl11Definition;
+    }
+
+    @Bean
+    public XsdSchema tiempoSchema() {
+        return new SimpleXsdSchema(new ClassPathResource("xsd/tiempo.xsd"));
+    }
+
+
+    @Bean(name = "promedio")
+    public DefaultWsdl11Definition practicaWsdl11Definition(XsdSchema practicaSchema) {
+        DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
+        wsdl11Definition.setPortTypeName("PromedioPort");
+        wsdl11Definition.setLocationUri("/ws/promedio");
+        wsdl11Definition.setTargetNamespace("http://www.cibertec.edu.pe/ws/promedio");
+        wsdl11Definition.setSchema(practicaSchema);
+        return wsdl11Definition;
+    }
+
+    @Bean
+    public XsdSchema practicaSchema() {
+        return new SimpleXsdSchema(new ClassPathResource("xsd/promedio.xsd"));
+    }
+
+    @Bean(name = "obrero")
+    public DefaultWsdl11Definition obreroWsdl11Definition(XsdSchema obreroSchema){
+        DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
+        wsdl11Definition.setPortTypeName("ObreroPort");
+        wsdl11Definition.setLocationUri("/ws/obrero");
+        wsdl11Definition.setTargetNamespace("http://www.cibertec.edu.pe/ws/obrero");
+        wsdl11Definition.setSchema(obreroSchema);
+        return wsdl11Definition;
+    }
+    @Bean
+    public XsdSchema obreroSchema(){
+        return new SimpleXsdSchema(new ClassPathResource("xsd/obrero.xsd"));
+    }
+
+
+
 }

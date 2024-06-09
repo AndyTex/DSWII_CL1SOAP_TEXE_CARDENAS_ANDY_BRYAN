@@ -1,0 +1,33 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.cibertec.edu.pe/ws/obrero"
+           xmlns:tns="http://www.cibertec.edu.pe/ws/obrero"
+           elementFormDefault="qualified">
+
+    <xs:complexType name="obrero">
+        <xs:sequence>
+            <xs:element name="horas" type="xs:int"/>
+            <xs:element name="salarioxhora" type="xs:double"/>
+            <xs:element name="salarioxhoraextra" type="xs:double"/>
+            <xs:element name="horasxlimite" type="xs:int" fixed="40"/>
+            <xs:element name="horasxextra" type="xs:int"/>
+            <xs:element name="salarioxfinal" type="xs:double"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="calcularSalarioRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="horas" type="xs:int" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="calcularSalarioResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="obrero" type="tns:obrero" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

@@ -1,0 +1,37 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.cibertec.edu.pe/ws/promedio"
+           xmlns:tns="http://www.cibertec.edu.pe/ws/promedio"
+           elementFormDefault="qualified">
+
+    <xs:complexType name="Promedio">
+        <xs:sequence>
+            <xs:element name="nota1" type="xs:int"/>
+            <xs:element name="nota2" type="xs:int"/>
+            <xs:element name="nota3" type="xs:int"/>
+            <xs:element name="nota4" type="xs:int"/>
+            <xs:element name="notaminima" type="xs:int"/>
+            <xs:element name="promedio" type="xs:double"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="PromedioRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="nota1" type="xs:int"/>
+                <xs:element name="nota2" type="xs:int"/>
+                <xs:element name="nota3" type="xs:int"/>
+                <xs:element name="nota4" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="PromedioResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="notaminima" type="xs:int"/>
+                <xs:element name="promedio" type="xs:double"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>
